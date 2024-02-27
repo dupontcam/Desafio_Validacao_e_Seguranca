@@ -1,7 +1,6 @@
 package com.devsuperior.demo.controllers;
 
 import com.devsuperior.demo.dto.CityDTO;
-import com.devsuperior.demo.dto.EventDTO;
 import com.devsuperior.demo.services.CityService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +25,7 @@ public class CityController {
         return ResponseEntity.ok().body(list);
     }
 
-    @PreAuthorize("hasRole('ROLE_ADMIN')")
+    @PreAuthorize("hasAnyRole('ROLE_ADMIN')")
     @PostMapping
     public ResponseEntity<CityDTO> insert(@Valid @RequestBody CityDTO dto) {
         dto = service.insert(dto);
